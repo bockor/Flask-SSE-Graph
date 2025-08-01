@@ -20,3 +20,5 @@ $ pip install -r requirements.txt
 3. Run the server using graph.py file:
 ```
 $ python3 graph.py
+```
+4. Open your favorite browser and go to ... <http://localhost:5000/>
