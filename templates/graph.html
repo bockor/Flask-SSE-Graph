@@ -1,0 +1,96 @@
+<!-- https://readmedium.com/how-to-build-a-network-graph-using-javascript-6195176105f5 -->
+<!-- https://itsfuad.medium.com/understanding-server-sent-events-sse-with-node-js-3e881c533081 -->
+<!-- https://docs.anychart.com/Basic_Charts/Network_Graph -->
+
+<html>
+  <head>
+    <title>Network Graph in JavaScript</title>
+    <style type="text/css">
+      html, body, #container {
+        width: 100%; height: 100%; margin: 0; padding: 0;
+      }
+      #graph {
+          text-align: center;
+          font-size: 18px;
+      }
+    </style>
+    <script src="https://cdn.anychart.com/releases/8.12.1/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.12.1/js/anychart-graph.min.js"></script>
+  </head>
+  <body>
+    <div id="graph"><p>A network graph is a mathematical visualization that is used to model pairwise relations between points.</p>
+      <p>Presented as nodes (vertices) that are linked by lines (edges).</p>
+    </div>
+    <div id="container"></div>
+    <script>
+        var data = {
+          "nodes": [
+            // asnz
+            {"id": "AS1", "group": "ASN"},
+            // prefixz
+            {"id": "10.10.10.0/8", "group": "Prefixz"},
+            {"id": "2001:db8::/32", "group": "PrefixzSix"}
+          ],
+          "edges": [
+            // parent to child companies
+            {"from": "AS1", "to": "10.10.10.0/8"},
+          ]};
+
+        var chart;
+
+        anychart.onDocumentReady(function() {
+
+            // Initialize the network graph with the provided data structure
+            chart = anychart.graph(data);
+            
+            // display chart node labels
+            chart.nodes().labels().enabled(true);
+
+            // configure edge tooltips.
+            // escape the "%" character for jinja here !!!
+            // chart.edges().tooltip().format("{\%from} manages {\%to}");
+
+            // configure settings for nodes
+            chart.group('ASN')
+                .stroke('black', 1)
+                .height(45)
+                .fill('orange')
+                .labels().fontSize(15);
+            chart.group('Prefixz')
+                .stroke('black', 1)
+                .height(25)
+                .labels().fontSize(12);
+            chart.group('PrefixzSix')
+                .stroke('black', 1)
+                .height(25)
+                .fill('green')
+                .labels().fontSize(12);
+
+             // set the title of the chart for context
+            chart.title("Our Network");
+
+            // Specify the HTML container ID where the chart will be rendered
+            chart.container("container");
+
+            // Initiate the rendering of the chart
+            chart.draw();
+
+    });
+
+
+  const eventSource = new EventSource("/listen")
+
+  eventSource.addEventListener("online", function(e) {
+  // Get the updates from the server
+  newData = JSON.parse(e.data);
+  console.log(newData);
+  
+  //life update https://playground.anychart.com/2sSXrf17/0 
+  chart.data(newData);
+
+}
+, true)
+   
+</script>
+  </body>
+</html>

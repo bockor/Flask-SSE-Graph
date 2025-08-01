@@ -1,0 +1,94 @@
+{
+  "nodes": [
+    {
+      "id": "AS1xxxx",
+      "group": "ASN"
+    },
+    {
+      "id": "AS2",
+      "group": "ASN"
+    },
+    {
+      "id": "AS3",
+      "group": "ASN"
+    },
+       {
+      "id": "AS666",
+      "group": "ASN"
+    },
+    {
+      "id": "2a04:9ec0::/29",
+      "group": "PrefixzSix"
+    },
+    {
+      "id": "2a66:9ec0::/32",
+      "group": "PrefixzSix"
+    },    
+    {
+      "id": "10.0.0.0/8",
+      "group": "Prefixz"
+    },
+    {
+      "id": "11.0.0.0/8",
+      "group": "Prefixz"
+    },
+    {
+      "id": "12.10.10.0/8",
+      "group": "Prefixz"
+    },
+    {
+      "id": "77.10.0.0/16",
+      "group": "Prefixz"
+    },
+    {
+      "id": "14.10.10.0/8",
+      "group": "Prefixz"
+    }
+  ],
+  "edges": [
+    {
+      "from": "AS1",
+      "to": "10.0.0.0/8"
+    },
+    {
+      "from": "AS1",
+      "to": "11.0.0.0/8"
+    },
+    {
+      "from": "AS2",
+      "to": "12.10.10.0/8"
+    },
+    {
+      "from": "AS2",
+      "to": "77.10.0.0/16"
+    },
+    {
+      "from": "AS3",
+      "to": "14.10.10.0/8"
+    },
+    {
+      "from": "AS3",
+      "to": "AS2"
+    },
+    {
+      "from": "AS3",
+      "to": "AS1"
+    },
+    {
+      "from": "AS3",
+      "to": "AS666"
+    },
+    {
+      "from": "AS1",
+      "to": "AS666"
+    },
+   {
+      "from": "AS2",
+      "to": "2a04:9ec0::/29"
+    },
+   {
+      "from": "AS666",
+      "to": "2a66:9ec0::/32"
+    }   
+  ]
+}
