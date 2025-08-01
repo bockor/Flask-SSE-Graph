@@ -1,7 +1,7 @@
 # Flask-SSE-Graph
 #### Generate and stream dynamic network graphs to browsers using Flask, Server-Sent Events and AnyChart Network Graphs
 
-### Working principle
+### Example Graph
 ![Example Graph](png/graph.png)
 
 ### How to use
@@ -10,6 +10,6 @@
 ```
 $ pip install -r requirements.txt
 ```
-3. Run the server using run.py file:
+3. Run the server using graph.py file:
 ```
 $ python3 graph.py
