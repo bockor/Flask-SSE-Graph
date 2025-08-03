@@ -4,7 +4,7 @@
 
 > The Server-Sent Events (SSE) API enables pushing messages/updates from a server to the web page via HTTP connection.
 
-> Server-Sent Events - One Way Messaging
+> Server-Sent Events - One Way Messaging.  
 A server-sent event is when a web page automatically gets messages/updates from a server.
 
 > Normally, a web page has to request data from the server, but with server-sent events, the updates are pushed automatically.
